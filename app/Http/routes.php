@@ -17,9 +17,16 @@ Route::get('/password/{password}',function($password){
     return bcrypt($password);
 });
 
+Route::get('/phpinfo',function(){
+  phpinfo();
+});
 
 
-
+Route::get('/test
+',function(){
+    var_dump(config('menu'));
+    return view('menu');
+});
 
 /*
 |--------------------------------------------------------------------------
