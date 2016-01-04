@@ -1,0 +1,3 @@
+# mj
+127.0.0.1 admin.mj.kankan.com assets.mj.kankan.com
+127.0.0.1 mj.kankan.com
