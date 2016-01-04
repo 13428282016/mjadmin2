@@ -10,22 +10,24 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+Route::group(['middleware' => ['web'],"domain"=>"mj.kankan.com"],function(){
 
-Route::get('/password/{password}',function($password){
-
-
-    return bcrypt($password);
-});
-
-Route::get('/phpinfo',function(){
-  phpinfo();
-});
+    Route::get('/password/{password}',function($password){
 
 
-Route::get('/test
-',function(){
-    var_dump(config('menu'));
-    return view('menu');
+        return bcrypt($password);
+    });
+
+    Route::get('/phpinfo',function(){
+        phpinfo();
+    });
+
+
+    Route::get('/test',function(){
+        var_dump(config('menu'));
+        return view('menu');
+    });
+
 });
 
 /*
@@ -42,7 +44,7 @@ Route::get('/test
 
 
 
-Route::group(['middleware' => ['web']], function () {
+Route::group(['middleware' => ['web'],"domain"=>"admin.mj.kankan.com",'namespace'=>'Admin'], function () {
     //
     //
     Route::get('auth/logout', 'Auth\AuthController@getLogout');
