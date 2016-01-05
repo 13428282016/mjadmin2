@@ -19,6 +19,7 @@ class Roles extends Migration
             $table->tinyInteger('order')->default(0);
             $table->string('description',128)->nullable();
             $table->timestamps();
+
         });
     }
 

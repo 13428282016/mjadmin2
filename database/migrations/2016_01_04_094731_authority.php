@@ -14,7 +14,7 @@ class Authority extends Migration
     {
         //
 
-        Schema::create('authoritys', function (Blueprint $table) {
+        Schema::create('authorities', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->unsignedInteger('group_id')->default(0);
@@ -23,6 +23,7 @@ class Authority extends Migration
             $table->tinyInteger('order')->default(0);
             $table->string('description',128)->nullable();
             $table->timestamps();
+
         });
     }
 
@@ -35,6 +36,6 @@ class Authority extends Migration
     {
         //
 
-        Schema::drop('authoritys');
+        Schema::drop('authorities');
     }
 }

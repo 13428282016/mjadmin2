@@ -12,7 +12,7 @@ class AuthoritySeeder extends Seeder
     public function run()
     {
         //
-        DB::table('authoritys')->insert([
+        DB::table('authorities')->insert([
             [
                 'id' => 1,
                 'name' => '用户管理-添加用户',

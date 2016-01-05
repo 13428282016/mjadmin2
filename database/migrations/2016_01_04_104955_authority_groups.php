@@ -19,6 +19,7 @@ class AuthorityGroups extends Migration
             $table->tinyInteger('status')->default(1);
             $table->tinyInteger('order')->default(0);
             $table->timestamps();
+
         });
     }
 

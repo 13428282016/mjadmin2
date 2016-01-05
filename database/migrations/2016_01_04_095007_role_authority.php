@@ -18,6 +18,7 @@ class RoleAuthority extends Migration
             $table->unsignedInteger('authority_id');
             $table->primary(['role_id','authority_id']);
             $table->timestamps();
+
         });
     }
 

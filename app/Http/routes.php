@@ -23,9 +23,11 @@ Route::group(['middleware' => ['web'],"domain"=>"mj.kankan.com"],function(){
     });
 
 
-    Route::get('/test',function(){
-        var_dump(config('menu'));
-        return view('menu');
+    Route::get('/test/{id}',function($id){
+        $admin=\App\Admin::findOrFail($id);
+        return $admin->authorities();
+
+
     });
 
 });
