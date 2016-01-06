@@ -9,9 +9,9 @@
 return [
 
 
-    'auth'=>[
+    'authority'=>[
         'supers'=>['admin','root'],
-        'ignore'=>['user@show','user@edit','password@reset']
+        'ignores'=>['User@show','User@edit','Password@reset','Home@getIndex']
     ]
 
 ];

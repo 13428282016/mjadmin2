@@ -1,0 +1,39 @@
+
+
+1.服务容器
+
+ 服务容器存储着在服务提供者中注册的服务，通过app()['name']或者依赖注入可以访问到对应的服务
+
+
+
+ 2.服务提供者
+ 用于注册服务到服务容器中
+
+  bind方法
+   每次都会返回新的实例
+
+   接口绑定$this->app->bind('App\Contracts\EventPusher', 'App\Services\PusherEventPusher'); 其中App\Services\PusherEventPusher是App\Contracts\EventPusher接口的实现
+   接口绑定的好处是更换实现类时不需要修改依赖注入的代码
+
+   singleton
+
+   每次都返回相同的实例
+
+
+3.服务
+
+ 提供一系列功能的类
+
+
+ 4.依赖注入
+
+ 根据类型，自动访问服务中类型一直的服务
+
+
+ 5.facades
+
+ 允许用类名的方式来访问服务容器中的服务。
+
+
+
+

@@ -58,10 +58,15 @@ class Admin extends Authenticatable
 
 
         $authorities=collect();
-        $roles->each(function($role)use ($authorities){
 
-            $authorities->push( $role->authorities);
-        });
+
+        foreach ($roles as $role)
+        {
+            $authorities= $authorities->merge( $role->authorities);
+        }
+
+
+
         return $authorities->unique('id')->all();
     }
 
@@ -69,22 +74,45 @@ class Admin extends Authenticatable
 
 
 
+
+        $supers=config('backend.authority.supers');
+
+        if( in_array($this->username,$supers))
+        {
+            return true;
+        }
         if(empty($controller)&&empty($action)){
             return false;
         }
+        $ignores =config('backend.authority.ignores');
+        foreach ($ignores as $ignore)
+        {
+            $items=explode('@',$ignore);
+            $icontroller=isset($items[0])?$items[0]:null;
+            $iaction=isset($items[1])?$items[1]:null;
+            if(!($icontroller&&$iaction))
+            {
+                continue;
+            }
+            if(($controller==$icontroller&&$action==$iaction)||($controller==$icontroller&&$iaction=='*'))
+            {
+                return true;
+            }
+        }
+
         if(!session('authorities'))
         {
             $authorities=$this->authorities();
-
             $formatedAuthorities=[];
             foreach($authorities as $authority) {
+
                 $formatedAuthority = $authority->format();
                 $formatedAuthorities = array_merge_recursive($formatedAuthorities, $formatedAuthority);
             }
-            session('authorities',$formatedAuthorities);
+            session(['authorities'=>$formatedAuthorities]);
 
         }
-        return session("authorities.$controller.$action");
+        return session("authorities.$controller")=='*'|| !!session("authorities.$controller.$action");
     }
 
 

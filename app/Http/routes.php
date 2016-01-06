@@ -10,25 +10,38 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-Route::group(['middleware' => ['web'],"domain"=>"mj.kankan.com"],function(){
+Route::group(['middleware' => ['web'], "domain" => "mj.kankan.com"], function () {
 
-    Route::get('/password/{password}',function($password){
+    Route::get('/password/{password}', function ($password) {
 
 
         return bcrypt($password);
     });
 
-    Route::get('/phpinfo',function(){
+    Route::get('/phpinfo', function () {
         phpinfo();
     });
 
+    Route::get('/test/service',function(){
 
-    Route::get('/test/{id}',function($id){
-        $admin=\App\Admin::findOrFail($id);
+        var_dump(Authority::canAccess('ad','ds'));
+
+    });
+    Route::get('/test/middleware',function(){
+
+             echo "test/middleware";
+    })->middleware(['authority']);
+    Route::get('/test/{id}', function ($id) {
+        $admin = \App\Admin::findOrFail($id);
+
+        var_dump($admin->hasAuthority('User', 'create'));
+        var_dump($admin->hasAuthority('xc', 'showcc'));
+        var_dump(session('authorities'));
         return $admin->authorities();
 
 
     });
+
 
 });
 
@@ -44,21 +57,42 @@ Route::group(['middleware' => ['web'],"domain"=>"mj.kankan.com"],function(){
 */
 
 
-
-
-Route::group(['middleware' => ['web'],"domain"=>"admin.mj.kankan.com",'namespace'=>'Admin'], function () {
+Route::group(['middleware' => ['web'], "domain" => "admin.mj.kankan.com", 'namespace' => 'Admin', 'as' => 'admin::'], function () {
     //
     //
-    Route::get('auth/logout', 'Auth\AuthController@getLogout');
-    Route::group(['middleware'=>['auth']],function(){
 
-        Route::get('/','HomeController@getIndex' );
+    Route::group(['middleware' => ['auth','access']], function () {
+
+        Route::group(['prefix' => 'auth'], function () {
+
+            Route::get('logout', 'AuthController@getLogout');
+        });
+
+
+        Route::group(['prefix' => 'user'], function () {
+
+
+            Route::get('profile', 'UserController@getProfile');
+
+
+        });
+        Route::resource('user', 'UserController');
+
+        Route::group(['prefix' => 'password'], function () {
+
+            Route::get('reset', 'PasswordController@getReset');
+            Route::post('reset', 'PasswordController@postReset');
+
+        });
+
+        Route::get('/', 'HomeController@getIndex');
 
     });
-    Route::get('auth/login', 'Auth\AuthController@getLogin');
-    Route::get('auth/register', 'Auth\AuthController@getRegister');
-    Route::post('auth/login', 'Auth\AuthController@postLogin');
-    Route::post('auth/register', 'Auth\AuthController@postRegister');
+
+    Route::group(['prefix' => 'auth'], function () {
+        Route::get('login', 'AuthController@getLogin');
+        Route::post('login', 'AuthController@postLogin');
+    });
 
 
 });
