@@ -10,6 +10,7 @@ return [
 
     'ucenter' => [
         'text' => '用户中心',
+        'icon'=>'fa-user',
         'children' => [
 
             'profile' => ['href' => 'user/profile', 'text' => '基本信息'],
@@ -20,6 +21,7 @@ return [
     ],
     'user' => [
         'text' => '用户管理',
+        'icon'=>'fa-users',
         'children' => [
 
             'add' => ['href' => 'user/create', 'text' => '添加用户'],

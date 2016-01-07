@@ -27,7 +27,7 @@ class UserController extends Controller
 
     public  function  getProfile(){
 
-        return view('');
+        return view('admin.user.show',['admin'=>$this->admin]);
     }
     public  function  show($id)
     {

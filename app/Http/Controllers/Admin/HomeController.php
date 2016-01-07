@@ -15,9 +15,8 @@ class HomeController extends Controller
 
     public  function  getIndex(){
 
-        $user=Auth::user();
 
-        return view('admin.index',['user'=>$user]);
+        return view('admin.index');
 
     }
 }
