@@ -68,23 +68,9 @@ Route::group(['middleware' => ['web'], "domain" => "admin.mj.kankan.com", 'names
             Route::get('logout', 'AuthController@getLogout');
         });
 
-
-        Route::group(['prefix' => 'user'], function () {
-
-
-            Route::get('profile', 'UserController@getProfile');
-
-
-        });
+        Route::controller('user', 'UserController');
         Route::resource('user', 'UserController');
-
-        Route::group(['prefix' => 'password'], function () {
-
-            Route::get('reset', 'PasswordController@getReset');
-            Route::post('reset', 'PasswordController@postReset');
-
-        });
-
+        Route::controller('password','PasswordController');
         Route::get('/', 'HomeController@getIndex');
 
     });

@@ -13,6 +13,12 @@ class UserController extends Controller
 {
     //
 
+
+    public function __construct(Admin $admin){
+
+        $this->admin=$admin;
+
+    }
     public  function  index(){
 
         return Admin::all();
@@ -21,7 +27,7 @@ class UserController extends Controller
 
     public  function  getProfile(){
 
-        return Auth::user();
+        return view('');
     }
     public  function  show($id)
     {

@@ -16,6 +16,7 @@ if (typeof jQuery === "undefined") {
   throw new Error("AdminLTE requires jQuery");
 }
 
+require('./vendor/slimScroll/jquery.slimscroll.min');
 /* AdminLTE
  *
  * @type Object
