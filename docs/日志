@@ -1,0 +1,86 @@
+laravel 日志的底层是monolog， laravel支持single，daily，syslog，errorlog 4总日志模式
+
+1.single 日志写在单个文件 默认写在storage/logs/laravel.log
+2.daily  日志文件每N天一个 默认写在 storage/logs/laravel(这里跟日期).log
+3.syslog 日志文件写在操作系统的日志上
+4.errorlog  日志文件写在操作系统的日志上  貌似在windows上和sysylog没多大区别
+
+
+日志分为消息和上下文 ，消息是对日志的描述，上下文是写日志时涉及到应用程序的一些参数
+
+日志分为7个级别
+
+DEBUG (100): Detailed debug information.
+
+INFO (200): Interesting events. Examples: User logs in, SQL logs.
+
+NOTICE (250): Normal but significant events.
+
+WARNING (300): Exceptional occurrences that are not errors. Examples: Use of deprecated APIs, poor use of an API, undesirable things that are not necessarily wrong.
+
+ERROR (400): Runtime errors that do not require immediate action but should typically be logged and monitored.
+
+CRITICAL (500): Critical conditions. Example: Application component unavailable, unexpected exception.
+
+ALERT (550): Action must be taken immediately. Example: Entire website down, database unavailable, etc. This should trigger the SMS alerts and wake you up.
+
+EMERGENCY (600): Emergency: system is unusable.
+
+
+//监听日志
+
+ Log::listen(function($level,$message,$context){
+            var_dump($level);
+            var_dump($message);
+            var_dump($context);
+        });
+        Log::debug('Files3232',['id'=>32132132,'name'=>'32323']);
+//       Log::useFiles(storage_path('logs/custom.log'));
+//        Log::debug('Files3232',['id'=>32132132,'name'=>'32323']);
+//        Log::alert('Files32323',['id'=>32132132,'name'=>'32323']);
+//        Log::critical('Files32323',['id'=>32132132,'name'=>'32323']);
+//        Log::error("Files32323",['id'=>32132132,'name'=>'32323']);
+//        Log::warning("Files32323",['id'=>32132132,'name'=>'32323']);
+//        Log::notice("Files32323",['id'=>32132132,'name'=>'32323']);
+//        Log::info("Files32323",['id'=>32132132,'name'=>'32323']);
+//
+//        Log::useDailyFiles(storage_path('logs/daily'),1);
+//        Log::debug('DailyFiles3232');
+//        Log::alert('DailyFiles32323');
+//        Log::critical('DailyFiles32323');
+//        Log::error("DailyFiles32323");
+//        Log::warning("DailyFiles32323");
+//        Log::notice("DailyFiles32323");
+//        Log::info("DailyFiles32323");
+//
+//        Log::useSyslog('laravel');
+//        Log::debug('Syslog3232');
+//        Log::alert('Syslog32323');
+//        Log::critical('Syslog32323');
+//        Log::error("Syslog32323");
+//        Log::warning("Syslog32323");
+//        Log::notice("Syslog32323");
+//        Log::info("Syslog32323");
+//
+//        Log::useErrorLog();
+//        Log::debug('ErrorLog3232');
+//        Log::alert('ErrorLog32323');
+//        Log::critical('ErrorLog32323');
+//        Log::error("ErrorLog32323");
+//        Log::warning("ErrorLog32323");
+//        Log::notice("ErrorLog32323");
+//
+
+     Log::info("ErrorLog32323");
+
+
+     获取日志的底层monolog 对象
+     $monolog = Log::getMonolog();
+
+
+
+     初始化日志，可以在程序启动时候初始化日志 在bootstrap /app.php 加入代码
+      //增加日志处理器
+      //$app->configureMonologUsing(function($monolog) {
+      //
+      //});

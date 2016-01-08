@@ -1,0 +1,40 @@
+
+启动任务可以通过 php artisan schedule:run  运行
+
+任务可以写在App\Console\Kernel.php schedule方法，也可以封装成laravel 的命令 再写，还提供了api直接调用系统的命令
+
+任务除了考虑他的频率，还可以考虑任务时候运行重叠执行，做任务中的输出结果 ，做任务前的通知，任务做完后的通知
+
+详细了解看api
+<?php
+
+namespace App\Console;
+
+use DB;
+use Illuminate\Console\Scheduling\Schedule;
+use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+
+class Kernel extends ConsoleKernel
+{
+    /**
+     * The Artisan commands provided by your application.
+     *
+     * @var array
+     */
+    protected $commands = [
+        \App\Console\Commands\Inspire::class,
+    ];
+
+    /**
+     * Define the application's command schedule.
+     *
+     * @param  \Illuminate\Console\Scheduling\Schedule  $schedule
+     * @return void
+     */
+    protected function schedule(Schedule $schedule)
+    {
+        $schedule->call(function () {
+            DB::table('recent_users')->delete();
+        })->daily();
+    }
+}

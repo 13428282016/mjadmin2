@@ -52,4 +52,8 @@ $app->singleton(
 |
 */
 
+//增加日志处理器
+//$app->configureMonologUsing(function($monolog) {
+//
+//});
 return $app;

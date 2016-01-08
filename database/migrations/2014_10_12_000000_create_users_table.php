@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->nullable();
             $table->string('password', 60);
             $table->string('last_ip',45)->nullable();
-            $table->dateTime('last_login_at')->nullable();
+            $table->timestamp('last_login_at')->nullable();
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();

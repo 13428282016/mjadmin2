@@ -31,17 +31,72 @@ Route::group(['middleware' => ['web'], "domain" => "mj.kankan.com"], function ()
 
              echo "test/middleware";
     })->middleware(['authority']);
-    Route::get('/test/{id}', function ($id) {
-        $admin = \App\Admin::findOrFail($id);
+//    Route::get('/test/{id}', function ($id) {
+//        $admin = \App\Admin::findOrFail($id);
+//
+//        var_dump($admin->hasAuthority('User', 'create'));
+//        var_dump($admin->hasAuthority('xc', 'showcc'));
+//        var_dump(session('authorities'));
+//        return $admin->authorities();
+//
+//
+//    });
 
-        var_dump($admin->hasAuthority('User', 'create'));
-        var_dump($admin->hasAuthority('xc', 'showcc'));
-        var_dump(session('authorities'));
-        return $admin->authorities();
+    Route::get('test/log',function(){
+        Log::listen(function($level,$message,$context){
+            var_dump($level);
+            var_dump($message);
+            var_dump($context);
+        });
+       Log::useFiles(storage_path('logs/custom.log'));
+        Log::debug('Files3232',['id'=>32132132,'name'=>'32323']);
+        Log::alert('Files32323',['id'=>32132132,'name'=>'32323']);
+        Log::critical('Files32323',['id'=>32132132,'name'=>'32323']);
+        Log::error("Files32323",['id'=>32132132,'name'=>'32323']);
+        Log::warning("Files32323",['id'=>32132132,'name'=>'32323']);
+        Log::notice("Files32323",['id'=>32132132,'name'=>'32323']);
+        Log::info("Files32323",['id'=>32132132,'name'=>'32323']);
+
+        Log::useDailyFiles(storage_path('logs/daily'),1);
+        Log::debug('DailyFiles3232');
+        Log::alert('DailyFiles32323');
+        Log::critical('DailyFiles32323');
+        Log::error("DailyFiles32323");
+        Log::warning("DailyFiles32323");
+        Log::notice("DailyFiles32323");
+        Log::info("DailyFiles32323");
+
+        Log::useSyslog('laravel');
+        Log::debug('Syslog3232');
+        Log::alert('Syslog32323');
+        Log::critical('Syslog32323');
+        Log::error("Syslog32323");
+        Log::warning("Syslog32323");
+        Log::notice("Syslog32323");
+        Log::info("Syslog32323");
+
+        Log::useErrorLog();
+        Log::debug('ErrorLog3232');
+        Log::alert('ErrorLog32323');
+        Log::critical('ErrorLog32323');
+        Log::error("ErrorLog32323");
+        Log::warning("ErrorLog32323");
+        Log::notice("ErrorLog32323");
+        Log::info("ErrorLog32323");
+
+
 
 
     });
 
+
+    Route::get('/test/event',function(){
+
+        Event::fire(new App\Events\Test());
+        event(new App\Events\Test());
+
+
+    });
 
 });
 
