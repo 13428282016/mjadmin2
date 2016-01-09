@@ -25,12 +25,13 @@ class Authority extends Model
     }
 
     public function format(){
-        $items=str_split($this->location,'|');
+        var_dump($this->location);
+        $items=explode("|",$this->location);
         $formatedItems=[];
         foreach($items as $item)
         {
 
-            $subItem=str_split($item,'@');
+            $subItem=explode('@',$item);
             $controller=isset($subItem[0])?$subItem[0]:null;
             $action=isset($subItem[1])?$subItem[1]:null;
             if(!($controller&&$action))

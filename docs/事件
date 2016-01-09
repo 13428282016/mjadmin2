@@ -1,0 +1,46 @@
+
+
+事件放在 App\Events ,监听者放在 App\Listener
+
+监听事件有两种方法，一种是在服务提供者 下的EventServiceProvider类中的 $listen 用key（事件） =》value（监听者）的形式配置
+
+一种是通过 Illuminate\Contracts\Events\Dispatcher 对象监听事件 $Dispatcher->listen('name',callback)
+
+事件触发，如果是 通过Event::fire($event) 或者event($event) 或者 $dispacher-》fire（）；
+
+
+
+
+ however, you may also register events manually with the event dispatcher using either the Event facade or the Illuminate\Contracts\Events\Dispatcher contract implementation:
+
+/**
+ * Register any other events for your application.
+ *
+ * @param  \Illuminate\Contracts\Events\Dispatcher  $events
+ * @return void
+ */
+public function boot(DispatcherContract $events)
+{
+    parent::boot($events);
+
+    $events->listen('event.name', function ($foo, $bar) {
+        //
+    });
+}
+
+事件使用*号
+
+Wildcard Event Listeners
+
+You may even register listeners using the * as a wildcard, allowing you to catch multiple events on the same listener. Wildcard listeners receive the entire event data array as a single argument:
+
+$events->listen('event.*', function (array $data) {
+    //
+});
+
+
+使用 命令 php artisan event:generate 创建事件和对应的事件监听器,创建完后需要自己受到修改文件名和类名，事件和监听类写好后需要在服务提供者注册
+
+
+
+//事件广播后续解析适合实现聊天室功能

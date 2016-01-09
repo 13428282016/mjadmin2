@@ -1,0 +1,2 @@
+1.出现找不到类的情况 ，单类是存在，先看看命名空间有没有错 ，没错执行试试 php artisan optimize
+2.500无返回结果 看看stroage和bootstrap/cache 目录的权限

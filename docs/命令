@@ -1,0 +1,214 @@
+
+
+创建命令
+php artisan make:console Test --command mj:test
+
+
+--command 参数调用命令的 名称  对应类中的$signature;
+命令的逻辑代码写在 handle函数里
+
+注册命令
+Once your command is finished, you need to register it with Artisan so it will be available for use. This is done within the app/Console/Kernel.php file.
+
+Within this file, you will find a list of commands in the commands property. To register your command, simply add the class name to the list. When Artisan boots, all the commands listed in this property will be resolved by the service container and registered with Artisan:
+
+protected $commands = [
+    Commands\SendEmails::class
+];
+调用命令
+
+php artisan mj：test
+
+通过代码调用命令
+Calling Commands Via Code
+
+Sometimes you may wish to execute an Artisan command outside of the CLI. For example, you may wish to fire an Artisan command from a route or controller. You may use the call method on the Artisan facade to accomplish this. The call method accepts the name of the command as the first argument, and an array of command parameters as the second argument. The exit code will be returned:
+
+Route::get('/foo', function () {
+    $exitCode = Artisan::call('email:send', [
+        'user' => 1, '--queue' => 'default'
+    ]);
+
+    //
+});
+Using the queue method on the Artisan facade, you may even queue Artisan commands so they are processed in the background by your queue workers:
+
+Route::get('/foo', function () {
+    Artisan::queue('email:send', [
+        'user' => 1, '--queue' => 'default'
+    ]);
+
+    //
+});
+If you need to specify the value of an option that does not accept string values, such as the --force flag on the migrate:refresh command, you may pass a boolean true or false:
+
+$exitCode = Artisan::call('migrate:refresh', [
+    '--force' => true,
+]);
+Calling Commands From Other Commands
+
+Sometimes you may wish to call other commands from an existing Artisan command. You may do so using the call method. This call method accepts the command name and an array of command parameters:
+
+/**
+ * Execute the console command.
+ *
+ * @return mixed
+ */
+public function handle()
+{
+    $this->call('email:send', [
+        'user' => 1, '--queue' => 'default'
+    ]);
+
+    //
+}
+If you would like to call another console command and suppress all of its output, you may use the callSilent method. The callSilent method has the same signature as the call method:
+
+$this->callSilent('email:send', [
+    'user' => 1, '--queue' => 'default'
+]);
+使用参数
+
+mj:test {id}
+
+mj:test 1   那么id=1;
+
+可选参数
+
+mj：test {id？}
+
+默认参数
+mj：test{id=1}
+
+数组参数
+
+mj：test {id*}
+
+mj：test 1 2 3 4  id=[1,2,3,4]
+使用选项
+
+布尔值选项
+mj:test {id} {--queue}
+
+mj:test 1  --queue 那么 queue为true
+mj:test 1   那么 queue为false
+
+
+可赋值选项
+mj:test {id} {--queue=}
+
+mj:test 1   --queue=1  那么 queue=1
+
+
+默认值选项
+mj:test {id} {--queue=default}
+mj:test 1    那么 queue=default
+
+缩写选项
+
+mj:test {id} {--Q|queue}
+
+mj:test 1 --Q  等价 mj:test 1 --queue
+
+数组选项
+
+mj:test  {user} {--id=*}
+
+mj：test 1 --id 1 2 3 4  id=【1,2,3,4】
+
+描述参数
+
+protected $signature = 'email:send
+                        {user : The ID of the user}
+                        {--queue= : Whether the job should be queued}';
+
+
+
+ 获取输入
+
+                        public function handle()
+                        {
+                            $userId = $this->argument('user');
+
+                            //
+                        }
+                        If you need to retrieve all of the arguments as an array, call argument with no parameters:
+
+                        $arguments = $this->argument();
+
+
+
+            获取选项
+                        // Retrieve a specific option...
+                        $queueName = $this->option('queue');
+
+                        // Retrieve all options...
+                        $options = $this->option();
+
+
+交互
+输入框
+ $name = $this->ask('What is your name?');
+
+ 密码输入框
+ $password = $this->secret('What is the password?');
+
+
+确认框
+
+if ($this->confirm('Do you wish to continue? [y|N]')) {
+    //
+}
+
+单选框
+
+anticipate 方法 运行用户输入自定义的结果，choice方法不运行用户输入自定义的结果，如果没有匹配可选会返回默认值
+The anticipate method can be used to provided autocompletion for possible choices. The user can still choose any answer, regardless of the auto-completion hints:
+
+$name = $this->anticipate('What is your name?', ['Taylor', 'Dayle']);
+If you need to give the user a predefined set of choices, you may use the choice method. The user chooses the index of the answer, but the value of the answer will be returned to you. You may set the default value to be returned if nothing is chosen:
+
+$name = $this->choice('What is your name?', ['Taylor', 'Dayle'], $default);
+
+
+
+输出
+
+绿色
+$this->info('Display this on the screen');
+红色
+
+$this->error('Something went wrong!');
+白色
+$this->line('Display this on the screen');
+
+表格
+The table method makes it easy to correctly format multiple rows / columns of data. Just pass in the headers and rows to the method. The width and height will be dynamically calculated based on the given data:
+
+$headers = ['Name', 'Email'];
+
+$users = App\User::all(['name', 'email'])->toArray();
+
+$this->table($headers, $users);
+
+
+
+进度条
+For long running tasks, it could be helpful to show a progress indicator. Using the output object, we can start, advance and stop the Progress Bar. You have to define the number of steps when you start the progress, then advance the Progress Bar after each step:
+
+$users = App\User::all();
+
+//精度条总值count($users)，开始进度条
+$bar = $this->output->createProgressBar(count($users));
+
+foreach ($users as $user) {
+    $this->performTask($user);
+
+    进度条+1
+    $bar->advance();
+}
+
+结束进度条
+$bar->finish();
+
+
