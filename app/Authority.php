@@ -25,7 +25,7 @@ class Authority extends Model
     }
 
     public function format(){
-        var_dump($this->location);
+
         $items=explode("|",$this->location);
         $formatedItems=[];
         foreach($items as $item)

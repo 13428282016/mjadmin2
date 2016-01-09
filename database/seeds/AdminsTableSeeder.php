@@ -21,7 +21,7 @@ class AdminsTableSeeder extends Seeder
             'password' => bcrypt('123456'),
             'username' => 'wangmingjie',
             'cellphone' => '13428282016',
-            'avatar' => 'https://laravel.com//assets/img/laravel-logo.png',
+            'avatar' => 'test/user2-160x160.jpg',
         ],
             [
                 'id' => 2,
@@ -30,7 +30,7 @@ class AdminsTableSeeder extends Seeder
                 'password' => bcrypt('123456'),
                 'username' => 'lishilin',
                 'cellphone' => '13428282016',
-                'avatar' => 'https://laravel.com//assets/img/laravel-logo.png',
+                'avatar' => 'test/user2-160x160.jpg',
             ], [
                 'id' => 3,
                 'name' => '超级管理员',
@@ -38,7 +38,7 @@ class AdminsTableSeeder extends Seeder
                 'password' => bcrypt('root'),
                 'username' => 'root',
                 'cellphone' => '13428282016',
-                'avatar' => 'https://laravel.com//assets/img/laravel-logo.png',
+                'avatar' => 'test/user2-160x160.jpg',
             ], [
                 'id' => 4,
                 'name' => '超级管理员',
@@ -46,7 +46,7 @@ class AdminsTableSeeder extends Seeder
                 'password' => bcrypt('admin'),
                 'username' => 'admin',
                 'cellphone' => '13428282016',
-                'avatar' => 'https://laravel.com//assets/img/laravel-logo.png',
+                'avatar' => 'test/user2-160x160.jpg',
             ]]);
     }
 }

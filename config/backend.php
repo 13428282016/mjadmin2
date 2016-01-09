@@ -11,7 +11,7 @@ return [
 
     'authority'=>[
         'supers'=>['admin','root'],
-        'ignores'=>['User@getProfile','Password@getReset','Password@postReset','Home@getIndex']
+        'ignores'=>['User@getProfile','Password@getReset','Password@postReset','Home@getIndex','Auth@getLogout','User@getEdit']
     ]
 
 ];

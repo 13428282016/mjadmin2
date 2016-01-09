@@ -2,6 +2,7 @@
 namespace App\Providers;
 
 use App\Admin;
+use Illuminate\Support\Facades\Auth;
 use View;
 use Illuminate\Support\ServiceProvider;
 
@@ -12,16 +13,19 @@ class ComposerServiceProvider extends ServiceProvider {
      *
      * @return void
      */
-    public function boot(Admin $user)
+    public function boot()
     {
         // 使用类来指定视图组件
 
-        View::composer('', 'App\Http\ViewComposers\ProfileComposer');
+//        View::composer('', 'App\Http\ViewComposers\ProfileComposer');
 
         // 使用闭包来指定视图组件
-        View::composer('admin.layout.main', function($view) use ($user)
+        View::composer('*', function($view)
         {
-            $view->with('user', $user);
+
+
+            $view->with('user',Auth::user());
+
         });
     }
 
