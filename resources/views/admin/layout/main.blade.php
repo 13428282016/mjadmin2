@@ -220,7 +220,7 @@ desired effect
                                     <a href="http://admin.mj.kankan.com/user/profile" class="btn btn-default btn-flat">个人中心</a>
                                 </div>
                                 <div class="pull-right">
-                                    <a href="auth/logout" class="btn btn-default btn-flat">退出</a>
+                                    <a href="/auth/logout" class="btn btn-default btn-flat">退出</a>
                                 </div>
                             </li>
                         </ul>

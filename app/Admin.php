@@ -87,17 +87,26 @@ class Admin extends Authenticatable
         $ignores =config('backend.authority.ignores');
         foreach ($ignores as $ignore)
         {
-            $items=explode('@',$ignore);
-            $icontroller=isset($items[0])?$items[0]:null;
-            $iaction=isset($items[1])?$items[1]:null;
-            if(!($icontroller&&$iaction))
+
+            $items=explode("|",$ignore['location']);
+            foreach($items as $item)
             {
-                continue;
+
+                $subItem=explode('@',$item);
+                $icontroller=isset($subItem[0])?$subItem[0]:null;
+                $iaction=isset($subItem[1])?$subItem[1]:null;
+                if(!($icontroller&&$iaction))
+                {
+                    continue;
+                }
+                if(($controller==$icontroller&&$action==$iaction)||($controller==$icontroller&&$iaction=='*'))
+                {
+                    return true;
+                }
+
             }
-            if(($controller==$icontroller&&$action==$iaction)||($controller==$icontroller&&$iaction=='*'))
-            {
-                return true;
-            }
+
+
         }
 
         if(!session('authorities'))

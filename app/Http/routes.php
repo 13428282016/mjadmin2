@@ -123,8 +123,16 @@ Route::group(['middleware' => ['web'], "domain" => "admin.mj.kankan.com", 'names
             Route::get('logout', 'AuthController@getLogout');
         });
 
-        Route::controller('user', 'UserController');
+        Route::group(['prefix'=>'user'],function(){
+
+            Route::get('profile','UserController@getProfile');
+            Route::get('edit','UserController@getEdit');
+            Route::post('edit','UserController@postEdit');
+
+        });
         Route::resource('user', 'UserController');
+
+
         Route::controller('password','PasswordController');
         Route::get('/', 'HomeController@getIndex');
 

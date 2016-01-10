@@ -17,5 +17,5 @@ function asset($path,$secure=false)
 function images($path,$secure=false)
 {
 
-    return  ($secure?'https':'http').'://images.mj.kankan.com/'.$path;
+    return $path?( ($secure?'https':'http').'://images.mj.kankan.com/'.$path):(($secure?'https':'http').'://images.mj.kankan.com/default/user2-160x160.jpg') ;
 }
