@@ -27,7 +27,7 @@ gulp.task('build:js', function (cb) {
             .pipe(sourceMaps.init())
             .pipe(uglify())
             .pipe(rename({extname:'.min.js'}))
-            .pipe(sourceMaps.write('../../build/js/source_maps'))
+            .pipe(sourceMaps.write('source_maps'))
 
             .pipe(gulp.dest('resources/assets/dist/js'));
     });
@@ -45,7 +45,7 @@ gulp.task('build:css:adminlte',function(cb){
 
         .pipe(minifyCSS())
         .pipe(rename({extname:'.min.css'}))
-        .pipe(sourceMaps.write('../../build/css/source_maps'))
+        .pipe(sourceMaps.write('source_maps'))
 
         .pipe(gulp.dest('resources/assets/dist/css'));
 
@@ -59,7 +59,7 @@ gulp.task('build:css:skins',function(cb){
         .pipe(sourceMaps.init())
         .pipe(minifyCSS())
         .pipe(rename({extname:'.min.css'}))
-        .pipe(sourceMaps.write('../../../build/css/source_maps'))
+        .pipe(sourceMaps.write('source_maps'))
 
         .pipe(gulp.dest('resources/assets/dist/css/skins'));
 
@@ -73,7 +73,7 @@ gulp.task('build:css:minify',['build:css:adminlte','build:css:skins'],function(c
         .pipe(sourceMaps.init())
         .pipe(minifyCSS())
         .pipe(rename({extname:'.min.css'}))
-        .pipe(sourceMaps.write('../../build/css/source_maps'))
+        .pipe(sourceMaps.write('source_maps'))
 
         .pipe(gulp.dest('resources/assets/dist/css'));
 

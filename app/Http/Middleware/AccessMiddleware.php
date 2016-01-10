@@ -27,7 +27,11 @@ class Access
 
         if(!\App\Facades\Access::can(str_replace('Controller', '',$controller),$action))
         {
-            abort(404);
+            if($request->ajax())
+            {
+                return ['status'=>403,'msg'=>'你没有权限访问改该模块'];
+            }
+            abort(403);
         }
         return $next($request);
     }

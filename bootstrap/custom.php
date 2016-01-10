@@ -12,3 +12,10 @@ function asset($path,$secure=false)
 
     return  ($secure?'https':'http').'://assets.mj.kankan.com/'.$path;
 }
+
+
+function images($path,$secure=false)
+{
+
+    return  ($secure?'https':'http').'://images.mj.kankan.com/'.$path;
+}
