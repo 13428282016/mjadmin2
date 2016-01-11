@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<!--
+This is a starter template page. Use this page to start your new project from
+scratch. This page gets rid of all links and provides the needed markup only.
+-->
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <title>魔镜后台 | 响巢看看</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- Bootstrap 3.3.5 -->
+    <?php /*<link rel="stylesheet" href="<?php echo e(asset('css/bootstrap.min.css')); ?>">*/ ?>
+    <!-- Font Awesome -->
+    <?php /*<link rel="stylesheet" href="<?php echo e(asset('css/font-awesome.min.css')); ?>">*/ ?>
+    <!-- Ionicons -->
+    <?php /*<link rel="stylesheet" href="<?php echo e(asset('css/ionicons.min.css')); ?>">*/ ?>
+    <!-- Theme style -->
+    <?php /*<link rel="stylesheet" href="<?php echo e(asset('css/AdminLTE.css')); ?>">*/ ?>
+    <link rel="stylesheet" href="<?php echo e(asset('css/common.min.css')); ?>">
+    <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
+          page. However, you can choose any other skin. Make sure you
+          apply the skin class to the body tag so the changes take effect.
+    -->
+    <link rel="stylesheet" href="<?php echo e(asset('css/skins/skin-blue.min.css')); ?>">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <?php /*<script src="<?php echo e(asset('js/vendor/html5shiv/html5shiv.min.js')); ?>"></script>*/ ?>
+    <?php /*<script src="<?php echo e(asset('js/vendor/respond/respond.min.js')); ?>"></script>*/ ?>
+    <script src="<?php echo e(asset("js/common.min.js")); ?>"></script>
+    <!--[if lt IE 9]>
+
+    <script src="<?php echo e(asset('js/shim.bundle.min.js')); ?>"></script>
+
+    <![endif]-->
+
+    <script>
+        if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
+            var msViewportStyle = document.createElement('style')
+            msViewportStyle.appendChild(
+                    document.createTextNode(
+                            '@-ms-viewport{width:auto!important}'
+                    )
+            )
+            document.querySelector('head').appendChild(msViewportStyle)
+        }
+    </script>
+</head>
+<!--
+BODY TAG OPTIONS:
+=================
+Apply one or more of the following classes to get the
+desired effect
+|---------------------------------------------------------|
+| SKINS         | skin-blue                               |
+|               | skin-black                              |
+|               | skin-purple                             |
+|               | skin-yellow                             |
+|               | skin-red                                |
+|               | skin-green                              |
+|---------------------------------------------------------|
+|LAYOUT OPTIONS | fixed                                   |
+|               | layout-boxed                            |
+|               | layout-top-nav                          |
+|               | sidebar-collapse                        |
+|               | sidebar-mini                            |
+|---------------------------------------------------------|
+-->
+<body class="hold-transition skin-blue sidebar-mini ">
+<div class="wrapper">
+
+    <!-- Main Header -->
+    <header class="main-header">
+
+        <!-- Logo -->
+        <a href="" class="logo">
+            <!-- mini logo for sidebar mini 50x50 pixels -->
+            <span class="logo-mini"><b>魔</b>镜</span>
+            <!-- logo for regular state and mobile devices -->
+            <span class="logo-lg"><b>魔镜</b>后台管理</span>
+        </a>
+
+        <!-- Header Navbar -->
+        <nav class="navbar navbar-static-top" role="navigation">
+            <!-- Sidebar toggle button-->
+            <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                <span class="sr-only">Toggle navigation</span>
+            </a>
+            <!-- Navbar Right Menu -->
+            <div class="navbar-custom-menu">
+                <ul class="nav navbar-nav">
+                    <!-- Messages: style can be found in dropdown.less-->
+                    <?php /*<li class="dropdown messages-menu">*/ ?>
+                    <?php /*<!-- Menu toggle button -->*/ ?>
+                    <?php /*<a href="#" class="dropdown-toggle" data-toggle="dropdown">*/ ?>
+                    <?php /*<i class="fa fa-envelope-o"></i>*/ ?>
+                    <?php /*<span class="label label-success">4</span>*/ ?>
+                    <?php /*</a>*/ ?>
+                    <?php /*<ul class="dropdown-menu">*/ ?>
+                    <?php /*<li class="header">You have 4 messages</li>*/ ?>
+                    <?php /*<li>*/ ?>
+                    <?php /*<!-- inner menu: contains the messages -->*/ ?>
+                    <?php /*<ul class="menu">*/ ?>
+                    <?php /*<li><!-- start message -->*/ ?>
+                    <?php /*<a href="#">*/ ?>
+                    <?php /*<div class="pull-left">*/ ?>
+                    <?php /*<!-- User Image -->*/ ?>
+                    <?php /*<img src="<?php echo e(asset("img/user2-160x160.jpg")); ?>" class="img-circle" alt="User Image">*/ ?>
+                    <?php /*</div>*/ ?>
+                    <?php /*<!-- Message title and timestamp -->*/ ?>
+                    <?php /*<h4>*/ ?>
+                    <?php /*Support Team*/ ?>
+                    <?php /*<small><i class="fa fa-clock-o"></i> 5 mins</small>*/ ?>
+                    <?php /*</h4>*/ ?>
+                    <?php /*<!-- The message -->*/ ?>
+                    <?php /*<p>Why not buy a new awesome theme?</p>*/ ?>
+                    <?php /*</a>*/ ?>
+                    <?php /*</li><!-- end message -->*/ ?>
+                    <?php /*</ul><!-- /.menu -->*/ ?>
+                    <?php /*</li>*/ ?>
+                    <?php /*<li class="footer"><a href="#">See All Messages</a></li>*/ ?>
+                    <?php /*</ul>*/ ?>
+                    <?php /*</li><!-- /.messages-menu -->*/ ?>
+
+                    <!-- Notifications Menu -->
+                    <?php /*<li class="dropdown notifications-menu">*/ ?>
+                    <?php /*<!-- Menu toggle button -->*/ ?>
+                    <?php /*<a href="#" class="dropdown-toggle" data-toggle="dropdown">*/ ?>
+                    <?php /*<i class="fa fa-bell-o"></i>*/ ?>
+                    <?php /*<span class="label label-warning">10</span>*/ ?>
+                    <?php /*</a>*/ ?>
+                    <?php /*<ul class="dropdown-menu">*/ ?>
+                    <?php /*<li class="header">You have 10 notifications</li>*/ ?>
+                    <?php /*<li>*/ ?>
+                    <?php /*<!-- Inner Menu: contains the notifications -->*/ ?>
+                    <?php /*<ul class="menu">*/ ?>
+                    <?php /*<li><!-- start notification -->*/ ?>
+                    <?php /*<a href="#">*/ ?>
+                    <?php /*<i class="fa fa-users text-aqua"></i> 5 new members joined today*/ ?>
+                    <?php /*</a>*/ ?>
+                    <?php /*</li><!-- end notification -->*/ ?>
+                    <?php /*</ul>*/ ?>
+                    <?php /*</li>*/ ?>
+                    <?php /*<li class="footer"><a href="#">View all</a></li>*/ ?>
+                    <?php /*</ul>*/ ?>
+                    <?php /*</li>*/ ?>
+                    <!-- Tasks Menu -->
+                    <?php /*<li class="dropdown tasks-menu">*/ ?>
+                    <?php /*<!-- Menu Toggle Button -->*/ ?>
+                    <?php /*<a href="#" class="dropdown-toggle" data-toggle="dropdown">*/ ?>
+                    <?php /*<i class="fa fa-flag-o"></i>*/ ?>
+                    <?php /*<span class="label label-danger">9</span>*/ ?>
+                    <?php /*</a>*/ ?>
+                    <?php /*<ul class="dropdown-menu">*/ ?>
+                    <?php /*<li class="header">You have 9 tasks</li>*/ ?>
+                    <?php /*<li>*/ ?>
+                    <?php /*<!-- Inner menu: contains the tasks -->*/ ?>
+                    <?php /*<ul class="menu">*/ ?>
+                    <?php /*<li><!-- Task item -->*/ ?>
+                    <?php /*<a href="#">*/ ?>
+                    <?php /*<!-- Task title and progress text -->*/ ?>
+                    <?php /*<h3>*/ ?>
+                    <?php /*Design some buttons*/ ?>
+                    <?php /*<small class="pull-right">20%</small>*/ ?>
+                    <?php /*</h3>*/ ?>
+                    <?php /*<!-- The progress bar -->*/ ?>
+                    <?php /*<div class="progress xs">*/ ?>
+                    <?php /*<!-- Change the css width attribute to simulate progress -->*/ ?>
+                    <?php /*<div class="progress-bar progress-bar-aqua" style="width: 20%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">*/ ?>
+                    <?php /*<span class="sr-only">20% Complete</span>*/ ?>
+                    <?php /*</div>*/ ?>
+                    <?php /*</div>*/ ?>
+                    <?php /*</a>*/ ?>
+                    <?php /*</li><!-- end task item -->*/ ?>
+                    <?php /*</ul>*/ ?>
+                    <?php /*</li>*/ ?>
+                    <?php /*<li class="footer">*/ ?>
+                    <?php /*<a href="#">View all tasks</a>*/ ?>
+                    <?php /*</li>*/ ?>
+                    <?php /*</ul>*/ ?>
+                    <?php /*</li>*/ ?>
+                    <!-- User Account Menu -->
+
+                    <li class="dropdown user user-menu">
+                        <!-- Menu Toggle Button -->
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <!-- The user image in the navbar-->
+                            <img src="<?php echo e(images($user->avatar)); ?>" class="user-image" alt="User Image">
+                            <!-- hidden-xs hides the username on small devices so only the image appears. -->
+                            <span class="hidden-xs"><?php echo e($user->name); ?></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <!-- The user image in the menu -->
+                            <li class="user-header">
+                                <img src="<?php echo e(images($user->avatar)); ?> " class="img-circle" alt="User Image">
+
+                                <p>
+                                    <?php echo e($user->name); ?> - <?php echo e(in_array($user->username,config('backend.authority.supers'))?'超级管理员': $user->roles()->first()->name); ?>
+
+                                    <small>创建时间  <?php echo e($user->created_at); ?></small>
+                                </p>
+                            </li>
+                            <!-- Menu Body -->
+                            <?php /*<li class="user-body">*/ ?>
+                                <?php /*<div class="col-xs-4 text-center">*/ ?>
+                                    <?php /*<a href="#">Followers</a>*/ ?>
+                                <?php /*</div>*/ ?>
+                                <?php /*<div class="col-xs-4 text-center">*/ ?>
+                                    <?php /*<a href="#">Sales</a>*/ ?>
+                                <?php /*</div>*/ ?>
+                                <?php /*<div class="col-xs-4 text-center">*/ ?>
+                                    <?php /*<a href="#">Friends</a>*/ ?>
+                                <?php /*</div>*/ ?>
+                            <?php /*</li>*/ ?>
+                            <!-- Menu Footer-->
+                            <li class="user-footer">
+                                <div class="pull-left">
+                                    <a href="http://admin.mj.kankan.com/user/profile" class="btn btn-default btn-flat">个人中心</a>
+                                </div>
+                                <div class="pull-right">
+                                    <a href="/auth/logout" class="btn btn-default btn-flat">退出</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- Control Sidebar Toggle Button -->
+                    <li>
+                        <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <!-- Left side column. contains the logo and sidebar -->
+    <aside class="main-sidebar">
+
+        <!-- sidebar: style can be found in sidebar.less -->
+        <section class="sidebar">
+
+            <!-- Sidebar user panel (optional) -->
+            <div class="user-panel">
+                <div class="pull-left image">
+                    <img src="<?php echo e(images($user->avatar)); ?>" class="img-circle" alt="User Image">
+                </div>
+                <div class="pull-left info">
+                    <p>  <?php echo e($user->name); ?></p>
+                    <!-- Status -->
+                    <?php /*<a href="#"><i class="fa fa-circle text-success"></i> Online</a>*/ ?>
+                    <a href="#"><i class="fa fa-circle text-success"></i><?php echo e(in_array($user->username,config('backend.authority.supers'))?'超级管理员': $user->roles()->first()->name); ?></a>
+                </div>
+            </div>
+
+            <!-- search form (Optional) -->
+            <form action="#" method="get" class="sidebar-form">
+                <div class="input-group">
+                    <input type="text" name="q" class="form-control" placeholder="搜索模块...">
+              <span class="input-group-btn">
+                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
+                </button>
+              </span>
+                </div>
+            </form>
+            <!-- /.search form -->
+
+            <!-- Sidebar Menu -->
+            <ul class="sidebar-menu">
+                <li class="header">所有模块</li>
+                <!-- Optionally, you can add icons to the links -->
+                <?php echo $__env->make('admin.menu', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+            </ul>
+            <!-- /.sidebar-menu -->
+        </section>
+        <!-- /.sidebar -->
+    </aside>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <?php echo $__env->yieldContent('content'); ?>
+    </div>
+    <!-- /.content-wrapper -->
+
+    <!-- Main Footer -->
+    <footer class="main-footer">
+        <!-- To the right -->
+        <div class="pull-right hidden-xs">
+            Anything you want
+        </div>
+        <!-- Default to the left -->
+        <strong>Copyright &copy; 2016 <a href="http://www.kankan.com" target="_blank">响巢看看</a>.</strong> All rights
+        reserved.
+    </footer>
+
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark">
+        <!-- Create the tabs -->
+        <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
+            <li class="active"><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
+            <li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
+        </ul>
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <!-- Home tab content -->
+            <div class="tab-pane active" id="control-sidebar-home-tab">
+                <h3 class="control-sidebar-heading">Recent Activity</h3>
+                <ul class="control-sidebar-menu">
+                    <li>
+                        <a href="javascript:;">
+                            <i class="menu-icon fa fa-birthday-cake bg-red"></i>
+
+                            <div class="menu-info">
+                                <h4 class="control-sidebar-subheading">Langdon's Birthday</h4>
+
+                                <p>Will be 23 on April 24th</p>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+                <!-- /.control-sidebar-menu -->
+
+                <h3 class="control-sidebar-heading">Tasks Progress</h3>
+                <ul class="control-sidebar-menu">
+                    <li>
+                        <a href="javascript:;">
+                            <h4 class="control-sidebar-subheading">
+                                Custom Template Design
+                                <span class="label label-danger pull-right">70%</span>
+                            </h4>
+
+                            <div class="progress progress-xxs">
+                                <div class="progress-bar progress-bar-danger" style="width: 70%"></div>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+                <!-- /.control-sidebar-menu -->
+
+            </div>
+            <!-- /.tab-pane -->
+            <!-- Stats tab content -->
+            <div class="tab-pane" id="control-sidebar-stats-tab">Stats Tab Content</div>
+            <!-- /.tab-pane -->
+            <!-- Settings tab content -->
+            <div class="tab-pane" id="control-sidebar-settings-tab">
+                <form method="post">
+                    <h3 class="control-sidebar-heading">General Settings</h3>
+
+                    <div class="form-group">
+                        <label class="control-sidebar-subheading">
+                            Report panel usage
+                            <input type="checkbox" class="pull-right" checked>
+                        </label>
+
+                        <p>
+                            Some information about this general settings option
+                        </p>
+                    </div>
+                    <!-- /.form-group -->
+                </form>
+            </div>
+            <!-- /.tab-pane -->
+        </div>
+    </aside>
+    <!-- /.control-sidebar -->
+    <!-- Add the sidebar's background. This div must be placed
+         immediately after the control sidebar -->
+    <div class="control-sidebar-bg"></div>
+</div>
+<!-- ./wrapper -->
+
+<!-- REQUIRED JS SCRIPTS -->
+
+<!-- jQuery 2.1.4 -->
+<!-- Bootstrap 3.3.5 -->
+<!-- AdminLTE App -->
+<script src="<?php echo e(asset("js/base.bundle.min.js")); ?>"></script>
+
+<!-- Optionally, you can add Slimscroll and FastClick plugins.
+     Both of these plugins are recommended to enhance the
+     user experience. Slimscroll is required when using the
+     fixed layout. -->
+</body>
+</html>

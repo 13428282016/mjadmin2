@@ -25,7 +25,8 @@ class UserController extends Controller
     public function  index()
     {
 
-        return Admin::all();
+
+        return view('admin.user.index');
 
     }
 
@@ -57,18 +58,18 @@ class UserController extends Controller
 
     public function  show($id)
     {
-        return Admin::findOrFail($id);
+
     }
 
     public function  edit($id)
     {
-        return Admin::findOrFail($id);
+
     }
 
     public function  update($id)
     {
 
-        return Admin::findOrFail($id);
+
     }
 
     public function  store(Requests\UserStore $request)
@@ -109,6 +110,6 @@ class UserController extends Controller
 
     public function destroy($id)
     {
-        return Admin::findOrFail($id);
+
     }
 }

@@ -144,4 +144,12 @@ Route::group(['middleware' => ['web'], "domain" => "admin.mj.kankan.com", 'names
     });
 
 
+
+    Route::group(['prefix'=>'api','namespace'=>'Api','as'=>'api::'],function(){
+
+
+        Route::resource('user', 'UserController',['only'=>['index']]);
+    });
+
+
 });

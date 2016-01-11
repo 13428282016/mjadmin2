@@ -10,26 +10,26 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
-    <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
-    <link rel="stylesheet" href="{{asset('css/font-awesome.min.css')}}">
-    <link rel="stylesheet" href="{{asset('css/login.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/vendor/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/vendor/font-awesome.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/admin/login.min.css')}}">
 
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <script src="{{asset("js/common.min.js")}}"></script>
+    {{--<script src="{{asset("js/admin/common.min.js")}}"></script>--}}
     <!--[if lt IE 9]>
 
-    <script src="{{asset('js/shim.bundle.min.js')}}"></script>
+    <!--<script src="{{asset('js/admin/shim.bundle.min.js')}}"></script>-->
 
     <![endif]-->
 
     <!-- Favicon and touch icons -->
-    <link rel="shortcut icon" href="{{asset("img/favicon.png")}}">
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{asset("img/apple-touch-icon-144-precomposed.png")}}">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{asset("img/apple-touch-icon-114-precomposed.png")}}">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{asset("img/apple-touch-icon-72-precomposed.png")}}">
-    <link rel="apple-touch-icon-precomposed" href="{{asset("img/apple-touch-icon-57-precomposed.png")}}">
+    <link rel="shortcut icon" href="{{asset("img/admin/favicon.png")}}">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{asset("img/admin/apple-touch-icon-144-precomposed.png")}}">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{asset("img/admin/apple-touch-icon-114-precomposed.png")}}">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{asset("img/admin/apple-touch-icon-72-precomposed.png")}}">
+    <link rel="apple-touch-icon-precomposed" href="{{asset("img/admin/apple-touch-icon-57-precomposed.png")}}">
 
 </head>
 
@@ -116,7 +116,7 @@
 
 
 <!-- Javascript -->
-<script src="{{asset("js/vendor.bundle.min.js")}}"></script>
+
 
 
 

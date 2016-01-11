@@ -1,0 +1,33 @@
+异常处理的类在App/ Exceptions/ Handler.php ,当异常发生时 会调用 该类的render和report方法
+The $dontReport property of the exception handler contains an array of exception types that will not be logged. By default, exceptions resulting from 404 errors are not written to your log files. You may add other exception types to this array as needed.
+$dontReport 指定那些类型的异常不需要report 也意味着这些异常不会写到日志文件中
+report 方法的默认操作事把异常写到日志文件中，你可以在该方法后面追加代码，把异常写到任何地方，例如通过 bugsnag服务。 ，通过 instacnof操作符 可以对不同的异常进行不一样的处理
+
+
+public function report(Exception $e)
+{
+    if ($e instanceof CustomException) {
+        //
+    }
+
+    return parent::report($e);
+}
+render 方法
+
+用于把异常信息输出到浏览器，默认使用基类的方法输出，也可以自定义输出格式
+
+public function render($request, Exception $e)
+{
+    if ($e instanceof CustomException) {
+        return response()->view('errors.custom', [], 500);
+    }
+
+    return parent::render($request, $e);
+}
+
+
+使用abort 方法可以触发 HttpException 默认这类异常不会被report
+
+abort(403, 'Unauthorized action.');
+abort（404）
+以后自定义错误页面，例如abort（404）对象的视图在resources/views/errors/404.blade.php  如要自定义403的，则创建一个403.blade.php

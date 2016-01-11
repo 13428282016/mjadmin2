@@ -12,28 +12,28 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
-    {{--<link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">--}}
+    {{--<link rel="stylesheet" href="{{asset('css/admin/bootstrap.min.css')}}">--}}
     <!-- Font Awesome -->
-    {{--<link rel="stylesheet" href="{{asset('css/font-awesome.min.css')}}">--}}
+    {{--<link rel="stylesheet" href="{{asset('css/admin/font-awesome.min.css')}}">--}}
     <!-- Ionicons -->
-    {{--<link rel="stylesheet" href="{{asset('css/ionicons.min.css')}}">--}}
+    {{--<link rel="stylesheet" href="{{asset('css/admin/ionicons.min.css')}}">--}}
     <!-- Theme style -->
-    {{--<link rel="stylesheet" href="{{asset('css/AdminLTE.css')}}">--}}
-    <link rel="stylesheet" href="{{asset('css/common.min.css')}}">
+    {{--<link rel="stylesheet" href="{{asset('css/admin/AdminLTE.css')}}">--}}
+    <link rel="stylesheet" href="{{asset('css/admin/common.min.css')}}">
     <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
           page. However, you can choose any other skin. Make sure you
           apply the skin class to the body tag so the changes take effect.
     -->
-    <link rel="stylesheet" href="{{asset('css/skins/skin-blue.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/admin/skins/skin-blue.min.css')}}">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     {{--<script src="{{asset('js/vendor/html5shiv/html5shiv.min.js')}}"></script>--}}
     {{--<script src="{{asset('js/vendor/respond/respond.min.js')}}"></script>--}}
-    <script src="{{asset("js/common.min.js")}}"></script>
+    <script src="{{asset("js/admin/common.min.js")}}"></script>
     <!--[if lt IE 9]>
 
-    <script src="{{asset('js/shim.bundle.min.js')}}"></script>
+    <script src="{{asset('js/admin/shim.bundle.min.js')}}"></script>
 
     <![endif]-->
 
@@ -376,7 +376,7 @@ desired effect
 <!-- jQuery 2.1.4 -->
 <!-- Bootstrap 3.3.5 -->
 <!-- AdminLTE App -->
-<script src="{{asset("js/base.bundle.min.js")}}"></script>
+<script src="{{asset("js/admin/base.bundle.min.js")}}"></script>
 
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the

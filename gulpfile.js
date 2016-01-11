@@ -7,7 +7,7 @@ var uglify = require('gulp-uglify'),
     sourceMaps = require('gulp-sourcemaps'),
     webpack = require('webpack'),
     webpackDevServer = require('webpack-dev-server'),
-    webpackConfig = require('./webpack.config'),
+    webpackConfig = require('./webpack.admin.config'),
     minifyCSS = require('gulp-minify-css'),
     less = require('gulp-less'),
     imageMin = require('gulp-imagemin'),
@@ -15,7 +15,7 @@ var uglify = require('gulp-uglify'),
     concat=require('gulp-concat'),
     rename=require('gulp-rename');
 
-gulp.task('build:js', function (cb) {
+gulp.task('admin:build:js', function (cb) {
 
     webpack(webpackConfig,function(err,stat){
 
@@ -23,21 +23,21 @@ gulp.task('build:js', function (cb) {
            console.log(err);
            return;
        }
-        gulp.src(['resources/assets/build/js/bundles/**/*.js'])
+        gulp.src(['resources/assets/build/js/admin/bundles/**/*.js'])
             .pipe(sourceMaps.init())
             .pipe(uglify())
             .pipe(rename({extname:'.min.js'}))
             .pipe(sourceMaps.write('source_maps'))
 
-            .pipe(gulp.dest('resources/assets/dist/js'));
+            .pipe(gulp.dest('resources/assets/dist/js/admin'));
     });
 
 });
 
 
-gulp.task('build:css:adminlte',function(cb){
+gulp.task('admin:build:css:adminlte',function(cb){
 
- return    gulp.src('resources/assets/build/css/less/admin-lte/AdminLTE.less')
+ return    gulp.src('resources/assets/build/css/admin/less/admin-lte/AdminLTE.less')
 
         .pipe(less())
         .pipe(  autoPrefixer())
@@ -47,47 +47,61 @@ gulp.task('build:css:adminlte',function(cb){
         .pipe(rename({extname:'.min.css'}))
         .pipe(sourceMaps.write('source_maps'))
 
-        .pipe(gulp.dest('resources/assets/dist/css'));
+        .pipe(gulp.dest('resources/assets/dist/css/admin'));
 
 });
 
-gulp.task('build:css:skins',function(cb){
+gulp.task('admin:build:css:skins',function(cb){
 
-  return  gulp.src('resources/assets/build/css/less/admin-lte/skins/*.less')
+  return  gulp.src('resources/assets/build/css/admin/less/admin-lte/skins/*.less')
         .pipe(less())
         .pipe(  autoPrefixer())
         .pipe(sourceMaps.init())
         .pipe(minifyCSS())
         .pipe(rename({extname:'.min.css'}))
-        .pipe(sourceMaps.write('source_maps'))
 
-        .pipe(gulp.dest('resources/assets/dist/css/skins'));
+
+        .pipe(gulp.dest('resources/assets/dist/css/admin/skins'));
 
 });
 
 
-gulp.task('build:css:minify',['build:css:adminlte','build:css:skins'],function(cb){
+gulp.task('admin:build:css:minify',['admin:build:css:adminlte','admin:build:css:skins'],function(cb){
 
-    return gulp.src(['resources/assets/build/css/*.css','bower_components/normalize-css/normalize.css'])
+    return gulp.src(['resources/assets/build/css/admin/*.css'])
+        .pipe(  autoPrefixer())
+        .pipe(sourceMaps.init())
+        .pipe(minifyCSS())
+        .pipe(rename({extname:'.min.css'}))
+
+        .pipe(sourceMaps.write('source_maps'))
+        .pipe(gulp.dest('resources/assets/dist/css/admin'));
+
+
+});
+
+gulp.task('vendor:build:css:minify',[],function(){
+
+    return gulp.src(['resources/assets/build/css/vendor/*.css'])
         .pipe(  autoPrefixer())
         .pipe(sourceMaps.init())
         .pipe(minifyCSS())
         .pipe(rename({extname:'.min.css'}))
         .pipe(sourceMaps.write('source_maps'))
-
-        .pipe(gulp.dest('resources/assets/dist/css'));
-
-
+        .pipe(gulp.dest('resources/assets/dist/css/vendor'));
 });
 
-gulp.task('build:css:concat',['build:css:minify'],function(cb){
+gulp.task('admin:build:css:concat',['admin:build:css:minify','vendor:build:css:minify'],function(cb){
 
-    return gulp.src(['resources/assets/dist/css/normalize.min.css','resources/assets/dist/css/AdminLTE.min.css','resources/assets/dist/css/bootstrap.min.css','resources/assets/dist/css/font-awesome.min.css','resources/assets/dist/css/ionicons.min.css'])
+    return gulp.src(['resources/assets/dist/css/vendor/normalize.min.css','resources/assets/dist/css/admin/AdminLTE.min.css','resources/assets/dist/css/vendor/bootstrap.min.css','resources/assets/dist/css/admin/app.min.css','resources/assets/dist/css/vendor/font-awesome.min.css','resources/assets/dist/css/vendor/ionicons.min.css'])
+        .pipe(sourceMaps.init())
+
         .pipe(concat('common.min.css'))
-        .pipe(gulp.dest('resources/assets/dist/css'));
+        .pipe(sourceMaps.write('source_maps'))
+        .pipe(gulp.dest('resources/assets/dist/css/admin'));
 
 });
-gulp.task('build:css',['build:css:adminlte','build:css:skins','build:css:minify','build:css:concat']);
+gulp.task('admin:build:css',['admin:build:css:adminlte','admin:build:css:skins','admin:build:css:minify','admin:build:css:concat']);
 
 
 gulp.task('build:font', function (cb) {
@@ -98,15 +112,15 @@ gulp.task('build:font', function (cb) {
 
 });
 
-gulp.task('build:image', function (cb) {
-  return   gulp.src('resources/assets/build/img/*.*').
+gulp.task('admin:build:image', function (cb) {
+  return   gulp.src('resources/assets/build/img/admin/*.*').
         pipe(imageMin()).
-        pipe(gulp.dest('resources/assets/dist/img'))
+        pipe(gulp.dest('resources/assets/dist/img/admin'))
 
 });
 
 
-gulp.task('build',['build:js','build:css','build:font','build:image']);
+gulp.task('admin:build',['admin:build:js','admin:build:css','build:font','admin:build:image']);
 gulp.task('server:webpack', function () {
 
     new webpackDevServer(webpack(webpackConfig), {

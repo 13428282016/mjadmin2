@@ -1,0 +1,36 @@
+{
+  "name": "mojing",
+  "description": "mojing admin",
+  "main": "",
+  "moduleType": [],
+  "keywords": [
+    "web",
+    "css",
+    "admin",
+    "js",
+    "bootstrap",
+    "webpack",
+    "gulp",
+    "bower",
+    "npm",
+    "node",
+    "react",
+    "laravel",
+    "mysql"
+  ],
+  "authors": [
+    "wmj"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/13428282016",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "normalize-css": "normalize.css#~3.0.3"
+  }
+}

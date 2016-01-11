@@ -1,0 +1,18 @@
+<?php foreach(config('menu') as $key=> $menu): ?>
+
+    <?php if(count($menu['children'])): ?>
+        <li class="<?php if(isset($curMenu) &&$curMenu==$key): ?> active <?php endif; ?> treeview">
+            <a href="#"><i class="fa <?php echo e(isset($menu['icon']) ? $menu['icon'] : 'fa-link'); ?>"></i> <span><?php echo e($menu['text']); ?></span> <i
+                        class="fa fa-angle-left pull-right"></i></a>
+            <ul class="treeview-menu">
+                <?php foreach($menu['children'] as $subKey=>$subMenu): ?>
+                    <li><a href="<?php echo e($subMenu['href']); ?>"><?php echo e($subMenu['text']); ?></a></li>
+                <?php endforeach; ?>
+            </ul>
+        </li>
+    <?php else: ?>
+        <li class="<?php if($curMenu==$key): ?> active <?php endif; ?>"><a href="#"><i class="fa fa-link"></i>
+                <span><?php echo e($menu['text']); ?></span></a></li>
+    <?php endif; ?>
+
+<?php endforeach; ?>
